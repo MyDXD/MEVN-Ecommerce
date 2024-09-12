@@ -10,6 +10,9 @@ const productSchema = new Schema(
   },
   {
     collection: "product",
+  },
+  {
+    timestamp: true
   }
 );
 
