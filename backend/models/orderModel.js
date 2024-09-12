@@ -10,6 +10,9 @@ const orderSchema = new Schema(
   },
   {
     collection: "order",
+  },
+  {
+    timestamp: true
   }
 );
 
