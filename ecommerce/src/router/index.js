@@ -6,12 +6,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '',
     name: 'toolbar',
     component: () => import('../views/toolbar.vue'),
     children: [
       {
-        path: '',
+        path: '/',
         name: 'home',
         component: HomeView
       },
@@ -24,6 +24,16 @@ const routes = [
         path: '/landding',
         name: 'landding',
         component: () => import('../views/landingPage')
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('../views/login.vue')
+      },
+      {
+        path: '/register',
+        name: 'register',
+        component: () => import('../views/register.vue')
       }
     ]
   }
