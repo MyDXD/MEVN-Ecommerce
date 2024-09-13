@@ -94,8 +94,10 @@ export default {
       } catch (error) {
         console.error('Login failed:', error)
       }
+
     },
-    register () {
+
+    async register () {
       this.$router.push('/register')
     }
   }
