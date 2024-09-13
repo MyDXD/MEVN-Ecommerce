@@ -1,5 +1,19 @@
 <template>
     <div>
-        <h1>hi landding</h1>
+      <Header />
     </div>
-</template>
+  </template>
+  
+<script>
+import Header from '../components/HeaderLadding.vue' 
+  
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+  
+  <style scoped>
+  </style>
+  
