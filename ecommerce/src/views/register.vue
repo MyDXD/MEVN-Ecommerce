@@ -41,12 +41,6 @@
                 required
               ></v-text-field>
               <v-text-field
-                v-model="tel"
-                label="Telephone"
-                prepend-icon="mdi-phone"
-                required
-              ></v-text-field>
-              <v-text-field
                 v-model="address"
                 label="Address"
                 prepend-icon="mdi-home"
@@ -84,7 +78,6 @@ export default {
       username: '',
       email: '',
       password: '',
-      tel: '',
       address: '',
       age: '',
       showPassword: false,
@@ -102,7 +95,6 @@ export default {
         !this.email ||
         !this.password ||
         !this.username ||
-        !this.tel ||
         !this.address ||
         !this.age
       ) {
@@ -117,7 +109,6 @@ export default {
             email: this.email,
             password: this.password,
             username: this.username,
-            tel: this.tel,
             address: this.address,
             age: this.age
           }
