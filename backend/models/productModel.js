@@ -9,10 +9,10 @@ const productSchema = new Schema(
     price: { type: Number, min: 0, required: true },
   },
   {
-    collection: "product",
+    timestamps: true
   },
   {
-    timestamp: true
+    collection: "product",
   }
 );
 

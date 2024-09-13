@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const productSchema = require("../models/productModel");
 
-// ดูผู้ใช้ทั้งหมด
+// ดูสินค้าทั้งหมด
 router.get("/", async (req, res) => {
     try {
         const products = await productSchema.find();
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// สร้างผู้ใช้ใหม่
+// สร้างสินค้าใหม่
 router.post('/', async (req, res) => {
     try {
         const newproduct = new productSchema(req.body);
