@@ -16,16 +16,13 @@ router.get("/", async (req, res) => {
 // ดูออเดอร์ตาม user id
 router.get('/:id', async (req, res) => {
     try {
-        const id = req.params.id || req.query.id;
-        const order = await orderSchema.findOne({ _id: id }, (err, data) => {
-            if (err) res.status(404);
-            return data;
-        }).populate("createdBy");
-
-        res.json(order);
+        const userID = req.params.id
+        console.log(userID)
+        const order = await orderSchema.find({createdBy: userID});
+        res.send(order)
     } catch (error) {
         console.log(error);
-        res.render("404");
+        res.status(500).send({"message": error});
     }
 });
 
@@ -53,6 +50,7 @@ router.put('/:id', async (req, res) => {
 });
 
 
+//delete all products in orders by  id
 router.delete('/:id', async (req, res) => {
     try {
         const deletedorder = await orderSchema.findByIdAndDelete(req.params.id);
