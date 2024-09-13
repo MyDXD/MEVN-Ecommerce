@@ -1,15 +1,19 @@
 <template>
     <div>
       <Header />
+      <br>
+      <Content />
     </div>
   </template>
   
 <script>
 import Header from '../components/HeaderLadding.vue' 
+import Content from '../components/Content.vue' 
   
 export default {
   components: {
-    Header
+    Header,
+    Content
   }
 }
 </script>
