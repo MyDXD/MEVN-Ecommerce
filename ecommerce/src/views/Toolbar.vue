@@ -1,6 +1,6 @@
 <template>
     <div>
-      <v-app-bar app color="primary" dark>
+      <v-app-bar app color="#603F26" dark>
       <v-btn text @click="navigateTo('homepage')"><h1>SHOOPING</h1></v-btn>
       <v-spacer></v-spacer>
       <v-btn text @click="navigateTo('homepage')">Home</v-btn> 

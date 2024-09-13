@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto" max-width="max" max-height="600px" outlined>
+    <v-card class="bgg mx-auto" max-width="max" max-height="600px" >
       <v-list-item three-line>
         <v-list-item-content>
           <div class="text-overline mb-4">
@@ -121,12 +121,16 @@ export default {
 }
 </script>
   
-  <style>
+  <style scoped>
   .dot-indicators .v-btn {
     margin: 0 4px;
   }
   v-card{
     border: none;
   }
+  /* .bgg{
+    border: none;
+    background-color: #FFDBB5;
+  } */
   </style>
   

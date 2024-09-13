@@ -104,14 +104,14 @@
     </div>
   </template>
   
-  <style>
+  <style scoped>
   .card-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: row;
-    gap: 16px; /* Adjust the space between cards if needed */
-    padding: 20px; /* Add padding around the container */
+    gap: 16px;
+    padding: 20px;
   }
   
   .card {
@@ -119,11 +119,11 @@
   }
   
   .card:nth-child(2) {
-    transform: translateY(20px); /* Adjust the value to control how much lower the second card is */
+    transform: translateY(20px);
   }
   
   .card:nth-child(3) {
-    transform: translateY(40px); /* Adjust the value to control how much lower the third card is */
+    transform: translateY(40px);
   }
   </style>
   
