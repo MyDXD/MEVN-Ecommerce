@@ -125,9 +125,8 @@ export default {
   .dot-indicators .v-btn {
     margin: 0 4px;
   }
-  
-  .dot-indicators .active {
-    color: #42a5f5;
+  v-card{
+    border: none;
   }
   </style>
   
