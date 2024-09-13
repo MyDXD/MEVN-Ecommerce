@@ -1,9 +1,9 @@
 <template>
     <div>
       <v-app-bar app color="primary" dark>
-      <v-btn text @click="navigateTo('home')"><h1>SHOOPING</h1></v-btn>
+      <v-btn text @click="navigateTo('homepage')"><h1>SHOOPING</h1></v-btn>
       <v-spacer></v-spacer>
-      <v-btn text @click="navigateTo('landding')">ladding</v-btn> 
+      <v-btn text @click="navigateTo('homepage')">Home</v-btn> 
       <v-btn text @click="navigateTo('login')">login</v-btn> 
       <v-btn text @click="navigateTo('register')">register</v-btn> 
       <v-spacer></v-spacer>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
@@ -11,19 +10,14 @@ const routes = [
     component: () => import('../views/Toolbar.vue'),
     children: [
       {
-        path: '/',
-        name: 'home',
-        component: HomeView
-      },
-      {
         path: '/about',
         name: 'about',
-        component: () => import('../views/AboutView.vue')
+        component: () => import('../views/AboutViewPage.vue')
       },
       {
-        path: '/landding',
-        name: 'landding',
-        component: () => import('../views/LandingPage')
+        path: '/',
+        name: 'homepage',
+        component: () => import('../views/Homepage.vue')
       },
       {
         path: '/login',
@@ -38,12 +32,12 @@ const routes = [
       {
         path: '/account',
         name: 'account',
-        component: () => import('../views/Accout.vue')
+        component: () => import('../views/AccoutPage.vue')
       },
       {
         path: '/bucket',
         name: 'bucket',
-        component: () => import('../views/Bucket.vue')
+        component: () => import('../views/BucketPage.vue')
       }
     ]
   }
