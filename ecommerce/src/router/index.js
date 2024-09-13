@@ -8,7 +8,7 @@ const routes = [
   {
     path: '',
     name: 'toolbar',
-    component: () => import('../views/toolbar.vue'),
+    component: () => import('../views/Toolbar.vue'),
     children: [
       {
         path: '/',
@@ -23,17 +23,27 @@ const routes = [
       {
         path: '/landding',
         name: 'landding',
-        component: () => import('../views/landingPage')
+        component: () => import('../views/LandingPage')
       },
       {
         path: '/login',
         name: 'login',
-        component: () => import('../views/login.vue')
+        component: () => import('../views/Login.vue')
       },
       {
         path: '/register',
         name: 'register',
-        component: () => import('../views/register.vue')
+        component: () => import('../views/Register.vue')
+      },
+      {
+        path: '/account',
+        name: 'account',
+        component: () => import('../views/Accout.vue')
+      },
+      {
+        path: '/bucket',
+        name: 'bucket',
+        component: () => import('../views/Bucket.vue')
       }
     ]
   }

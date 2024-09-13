@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/authRoutes');
 var productRouter = require('./routes/products')
 var orderRouter = require('./routes/orders')
+var {authToken,checkAdmin} = require("./middleware/auth.middleware")
 
 var app = express();
 app.use(cors())
@@ -29,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users',authToken,checkAdmin,usersRouter);
 app.use('/',authRoutes);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
