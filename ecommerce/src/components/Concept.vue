@@ -2,7 +2,7 @@
     <div class="card-container">
       <v-card
         class="mx-auto card"
-        max-width="344"
+        max-width="450"
         outlined
       >
         <v-list-item three-line>
@@ -36,7 +36,7 @@
   
       <v-card
         class="mx-auto card"
-        max-width="344"
+        max-width="450"
         outlined
       >
         <v-list-item three-line>
@@ -70,7 +70,7 @@
   
       <v-card
         class="mx-auto card"
-        max-width="344"
+        max-width="450"
         outlined
       >
         <v-list-item three-line>
