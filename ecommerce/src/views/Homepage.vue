@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg">
       <Header />
       <br>
       <Content />
@@ -31,5 +31,8 @@ export default {
 </script>
   
   <style scoped>
+  /* .bg{
+    background-color:#FFEAC5 ;
+  } */
   </style>
   
