@@ -1,7 +1,5 @@
 <template>
-  <div>
-    
-  </div>
+  <h1>hi bucket</h1>
 </template>
 
 <script>
