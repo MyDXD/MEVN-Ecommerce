@@ -1,0 +1,129 @@
+<template>
+    <div class="card-container">
+      <v-card
+        class="mx-auto card"
+        max-width="344"
+        outlined
+      >
+        <v-list-item three-line>
+          <v-list-item-content>
+            <div class="text-overline mb-4">
+              OVERLINE
+            </div>
+            <v-list-item-title class="text-h5 mb-1">
+              Headline 5
+            </v-list-item-title>
+            <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+          </v-list-item-content>
+    
+          <v-list-item-avatar
+            tile
+            size="80"
+            color="grey"
+          ></v-list-item-avatar>
+        </v-list-item>
+    
+        <v-card-actions>
+          <v-btn
+            outlined
+            rounded
+            text
+          >
+            Button
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+  
+      <v-card
+        class="mx-auto card"
+        max-width="344"
+        outlined
+      >
+        <v-list-item three-line>
+          <v-list-item-content>
+            <div class="text-overline mb-4">
+              OVERLINE
+            </div>
+            <v-list-item-title class="text-h5 mb-1">
+              Headline 5
+            </v-list-item-title>
+            <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+          </v-list-item-content>
+    
+          <v-list-item-avatar
+            tile
+            size="80"
+            color="grey"
+          ></v-list-item-avatar>
+        </v-list-item>
+    
+        <v-card-actions>
+          <v-btn
+            outlined
+            rounded
+            text
+          >
+            Button
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+  
+      <v-card
+        class="mx-auto card"
+        max-width="344"
+        outlined
+      >
+        <v-list-item three-line>
+          <v-list-item-content>
+            <div class="text-overline mb-4">
+              OVERLINE
+            </div>
+            <v-list-item-title class="text-h5 mb-1">
+              Headline 5
+            </v-list-item-title>
+            <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+          </v-list-item-content>
+    
+          <v-list-item-avatar
+            tile
+            size="80"
+            color="grey"
+          ></v-list-item-avatar>
+        </v-list-item>
+    
+        <v-card-actions>
+          <v-btn
+            outlined
+            rounded
+            text
+          >
+            Button
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </div>
+  </template>
+  
+  <style>
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 16px; /* Adjust the space between cards if needed */
+    padding: 20px; /* Add padding around the container */
+  }
+  
+  .card {
+    position: relative;
+  }
+  
+  .card:nth-child(2) {
+    transform: translateY(20px); /* Adjust the value to control how much lower the second card is */
+  }
+  
+  .card:nth-child(3) {
+    transform: translateY(40px); /* Adjust the value to control how much lower the third card is */
+  }
+  </style>
+  
