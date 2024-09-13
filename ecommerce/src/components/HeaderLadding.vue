@@ -1,52 +1,52 @@
 <template>
-    <v-card class="bgg mx-auto" max-width="max" max-height="600px" >
-      <v-list-item three-line>
-        <v-list-item-content>
-          <div class="text-overline mb-4">
-            {{ currentCard.id }}
-          </div>
-          <v-list-item-title class="text-h1 mb-1">
-            {{ currentCard.title }}
-          </v-list-item-title>
-          <v-list-item-subtitle>{{ currentCard.description }}</v-list-item-subtitle>
-        </v-list-item-content>
-  
-        <v-list-item-avatar tile size="400" color="grey">
-          <img :src="currentCard.image" alt="" />
-        </v-list-item-avatar>
-      </v-list-item>
-  
-      <v-card-actions>
-        <v-btn outlined rounded text>
-          {{ currentCard.buttonText }}
-        </v-btn>
-      </v-card-actions>
-  
-      <div style="display: flex; justify-content: flex-end">
-        <v-btn outlined rounded text @click="prevCard">
-          <v-icon>mdi-chevron-left</v-icon> Previous
-        </v-btn>
-  
-        <v-btn outlined rounded text @click="nextCard">
-          <v-icon>mdi-chevron-right</v-icon> Next
-        </v-btn>
-      </div>
-  
-      <!-- Dot Indicators -->
-      <div class="dot-indicators" style="text-align: center; margin-top: 16px;">
-        <v-btn
-          v-for="(card, index) in cards"
-          :key="index"
-          icon
-          @click="goToCard(index)"
-          :class="{ active: currentCardIndex === index }"
-        >
-          <v-icon>{{ currentCardIndex === index ? 'mdi-checkbox-blank-circle' : 'mdi-circle-outline' }}</v-icon>
-        </v-btn>
-      </div>
-    </v-card>
-  </template>
-  
+  <v-card class="bgg mx-auto" max-width="max" max-height="600px" flat tile>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          {{ currentCard.id }}
+        </div>
+        <v-list-item-title class="text-h1 mb-1">
+          {{ currentCard.title }}
+        </v-list-item-title>
+        <v-list-item-subtitle>{{ currentCard.description }}</v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar tile size="400" color="grey">
+        <img :src="currentCard.image" alt="" />
+      </v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn outlined rounded text>
+        {{ currentCard.buttonText }}
+      </v-btn>
+    </v-card-actions>
+
+    <div style="display: flex; justify-content: flex-end">
+      <v-btn outlined rounded text @click="prevCard">
+        <v-icon>mdi-chevron-left</v-icon> Previous
+      </v-btn>
+
+      <v-btn outlined rounded text @click="nextCard">
+        <v-icon>mdi-chevron-right</v-icon> Next
+      </v-btn>
+    </div>
+
+    <!-- Dot Indicators -->
+    <div class="dot-indicators" style="text-align: center; margin-top: 16px;">
+      <v-btn
+        v-for="(card, index) in cards"
+        :key="index"
+        icon
+        @click="goToCard(index)"
+        :class="{ active: currentCardIndex === index }"
+      >
+        <v-icon>{{ currentCardIndex === index ? 'mdi-checkbox-blank-circle' : 'mdi-circle-outline' }}</v-icon>
+      </v-btn>
+    </div>
+  </v-card>
+</template>
+
 <script>
 export default {
   data () {
@@ -120,17 +120,14 @@ export default {
   }
 }
 </script>
-  
-  <style scoped>
-  .dot-indicators .v-btn {
-    margin: 0 4px;
-  }
-  v-card{
-    border: none;
-  }
-  /* .bgg{
-    border: none;
-    background-color: #FFDBB5;
-  } */
-  </style>
-  
+
+<style scoped>
+.bgg {
+  background-color: #FFDBB5;
+  margin-top: 0;
+  border: none;
+}
+.dot-indicators .v-btn {
+  margin: 0 4px;
+}
+</style>

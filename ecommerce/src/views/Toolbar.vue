@@ -1,5 +1,8 @@
 <template>
     <div>
+      <v-main>
+      <router-view />
+    </v-main>
       <v-app-bar app color="#603F26" dark>
       <v-btn text @click="navigateTo('homepage')"><h1>SHOOPING</h1></v-btn>
       <v-spacer></v-spacer>
@@ -17,9 +20,7 @@
 </v-btn> 
       <v-btn text @click="navigateTo('register')">Logout</v-btn> 
     </v-app-bar>
-    <v-main>
-      <router-view />
-    </v-main>
+    
 </div>
 </template>
 

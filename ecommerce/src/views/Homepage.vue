@@ -1,5 +1,5 @@
 <template>
-    <div class="bg">
+    <section class="bg">
       <Header />
       <br>
       <Content />
@@ -9,7 +9,7 @@
       <Promotion />
       <br>
       <Footer />
-    </div>
+    </section>
   </template>
   
 <script>
@@ -31,8 +31,12 @@ export default {
 </script>
   
   <style scoped>
-  /* .bg{
-    background-color:#FFEAC5 ;
-  } */
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .bg{
+    background-color:#FFF8E8 ;
+  }
   </style>
   
