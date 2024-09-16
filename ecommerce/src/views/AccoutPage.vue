@@ -1,14 +1,16 @@
 <template>
-    <v-container>
+    <div>
+        <h1>ALL PRODUCTS</h1>
+        <v-container>
       <v-row>
         <v-col
           v-for="(product, index) in products"
           :key="index"
           cols="12"
-          sm="6"
           md="4"
         >
-          <v-card>
+          <div class="card">
+            <v-card>
             <v-card-title>{{ product.title }}</v-card-title>
             <v-card-subtitle>{{ product.description }}</v-card-subtitle>
             <v-card-text>
@@ -19,9 +21,11 @@
               <v-btn color="primary" @click="buyProduct(product)">Buy</v-btn>
             </v-card-actions>
           </v-card>
+          </div>
         </v-col>
       </v-row>
     </v-container>
+    </div>
   </template>
   
 <script>
@@ -51,4 +55,13 @@ import axios from "axios";
     },
   };
   </script>
+  <style scoped>
+  h1 {
+  text-align: center;
+  margin-block: 2rem;
+}
+.card{
+    margin-block: 2rem;
+}
+</style>
   

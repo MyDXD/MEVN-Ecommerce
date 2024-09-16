@@ -1,6 +1,12 @@
 <template>
-    <div class="card-container">
-      <v-card
+ <div>
+  <v-row justify="center" class="mb-2">
+      <v-col cols="12" class="text-center">
+        <h2>Our Concept</h2>
+      </v-col>
+    </v-row>
+  <div class="card-container">
+    <v-card
         class="mx-auto card"
         max-width="450"
         outlined
@@ -102,9 +108,13 @@
         </v-card-actions>
       </v-card>
     </div>
+ </div>
   </template>
   
   <style scoped>
+  h2{
+    text-align: center;
+  }
   .card-container {
     display: flex;
     justify-content: center;
