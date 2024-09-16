@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -48,5 +49,18 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token"); // ตรวจสอบ token ใน localStorage
+  if (!token && to.name !== 'login' && to.name !== 'register') {
+    // ถ้าไม่มี token และไม่ใช่หน้า login หรือ register
+    next({ name: 'login' }); // เปลี่ยนเส้นทางไปที่หน้า login
+  } else if (to.name === 'login' && token) {
+    // ถ้าเป็น route /login และผู้ใช้ล็อกอินอยู่แล้ว
+    next({ name: 'homepage' }); // เปลี่ยนเส้นทางไปที่ Home
+  } else {
+    next(); // ให้เข้าถึง route ตามปกติ
+  }
+});
 
 export default router
