@@ -10,7 +10,7 @@
         :key="index"
       >
         <v-card
-          class="mx-2"
+          class="mx-2" 
           max-width="344"
         >
           <v-card-text>
