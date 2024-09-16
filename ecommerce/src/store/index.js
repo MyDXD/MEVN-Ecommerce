@@ -33,7 +33,6 @@ export default new Vuex.Store({
         });
 
         const token = response.data.token;
-        console.log("token", token);
 
 
         localStorage.setItem("token", token);

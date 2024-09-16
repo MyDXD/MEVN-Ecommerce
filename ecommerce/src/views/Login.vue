@@ -37,7 +37,6 @@
 
 <script>
 /* eslint-disable */
-
 // import Swal from 'sweetalert2'
 export default {
   data () {
@@ -48,35 +47,13 @@ export default {
       valid: false
     }
   },
+
   methods: {
-    // async login () {
-    //   if (!this.username || !this.password) {
-    //     alert('Please enter both username and password')
-    //     return
-    //   }
-
-    //   try {
-    //     const response = await this.axios.post('http://localhost:3000/api/v1/login', {
-    //       username: this.username,
-    //       password: this.password
-    //     })
-
-    //     const token = response.data.token
-    //     localStorage.setItem('Token', token)
-    //     const id = response.data.id
-    //     localStorage.setItem('Id', id)
-    //     console.log(id)
-    //     this.$router.push('/') 
-    //   } catch (error) {
-    //     console.error(error.message)
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Error occurred',
-    //       text: 'Something went wrong!'
-    //     })
-    //   }
-    // },
     async login() {
+      if (!this.email || !this.password) {
+        alert('Please enter both email and password')
+        return
+      }
       try {
         // เรียก action login ด้วย async/await
         await this.$store.dispatch('login', {
@@ -96,7 +73,6 @@ export default {
       }
 
     },
-
     async register () {
       this.$router.push('/register')
     }
