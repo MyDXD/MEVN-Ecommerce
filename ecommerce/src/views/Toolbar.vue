@@ -51,6 +51,10 @@ export default {
       }
     },
   },
+  created() {
+    // โหลด token จาก localStorage เมื่อคอมโพเนนต์ถูกสร้างขึ้น
+    this.token = localStorage.getItem("token");
+  },
   watch: {
     // ใช้ watch เพื่อสังเกตการณ์การเปลี่ยนแปลงของ localStorage token
     '$route'() {
