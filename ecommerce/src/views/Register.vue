@@ -70,6 +70,8 @@
 </template>
 
 <script>
+/* eslint-disable */ 
+
 import Swal from 'sweetalert2'
 
 export default {
@@ -104,7 +106,7 @@ export default {
 
       try {
         const response = await this.axios.post(
-          'http://localhost:3000/api/v1/register',
+          'http://localhost:5000/register',
           {
             email: this.email,
             password: this.password,
@@ -119,12 +121,17 @@ export default {
         Swal.fire({
           title: 'Good job!',
           text: 'Registration successful!',
-          icon: 'success'
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
         })
-        this.$router.push('/login')
 
-        // Optionally redirect to login page
-        // this.$router.push("/login");
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        })
+
+        this.$router.push("/")
       } catch (error) {
         console.error(error.message)
         Swal.fire({
