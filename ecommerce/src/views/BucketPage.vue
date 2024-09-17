@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>ALL STORE</h1>
+    <h1>My Bucket</h1>
     <v-container>
       <v-row>
         <!-- Loop through the number of cards -->
