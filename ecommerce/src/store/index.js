@@ -36,6 +36,11 @@ export default new Vuex.Store({
 
 
         localStorage.setItem("token", token);
+        const decoded = jwtDecode(token);        
+
+        localStorage.setItem("username", decoded.name);
+        localStorage.setItem("id", decoded.id);
+
         commit("setToken", token);
       } catch (error) {
         throw error; // สามารถจัดการ error ใน component
@@ -44,6 +49,8 @@ export default new Vuex.Store({
     async logout({ commit }) {
       commit("clearAuthData");
       localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      localStorage.removeItem("id");
     },
     async tryAutoLogin({ commit }) {
       const token = localStorage.getItem("token");

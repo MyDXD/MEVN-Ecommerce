@@ -25,14 +25,27 @@ router.get('/:id', async (req, res) => {
 // สร้างสินค้าใหม่
 router.post('/', async (req, res) => {
     try {
-        const newproduct = new productSchema(req.body);
-        const savedproduct = await newproduct.save();
-        res.status(201).json(savedproduct);
+        // ตรวจสอบว่ามีการส่งไฟล์รูปภาพมาใน request body หรือไม่
+        if (!req.body.image) {
+            return res.status(400).json({ error: "Image is required" });
+        }
+
+        // สร้างสินค้าจากข้อมูลใน req.body
+        const newProduct = new productSchema({
+            title: req.body.title,
+            description: req.body.description,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            image: req.body.image,
+        });
+
+        // บันทึกสินค้าใหม่ลงฐานข้อมูล
+        const savedProduct = await newProduct.save();
+        res.status(201).json(savedProduct);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
 });
-
 
 // แก้ข้อมูล product
 router.put('/:id', async (req, res) => {

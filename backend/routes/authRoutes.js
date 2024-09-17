@@ -58,7 +58,8 @@ router.post("/login", async (req, res) => {
     );
 
     // res.json({ id : user._id , email : user.email, userName : user.name, token ,   isActive : user.isActive });
-    res.status(200).json({ message : "Login Successfuly" , token : token,  email : user.email , username : user.username ,role : user.role});
+    res.status(200).json({ message : "Login Successfuly" , token : token,
+        email : user.email , username : user.username ,role : user.role , id : user._id});
   } catch (error) {
     res.status(500).json({ message: error.toString() });
   }
