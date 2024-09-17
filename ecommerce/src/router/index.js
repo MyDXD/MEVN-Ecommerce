@@ -39,17 +39,7 @@ const routes = [
         path: '/bucket',
         name: 'bucket',
         component: () => import('../views/BucketPage.vue')
-      },
-      {
-        path: '/adminaddproducts',
-        name: 'addpro',
-        component: () => import('../views/AdminAddProducts.vue')
-      },
-      {
-        path: '/store',
-        name: 'store',
-        component: () => import('../views/Store.vue')
-      },
+      }
     ]
   }
 ]

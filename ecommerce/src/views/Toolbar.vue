@@ -8,14 +8,7 @@
       <RouterLink to="/"><v-btn text>
           <h1>SHOOPING</h1>
         </v-btn></RouterLink>
-        
-      <v-spacer></v-spacer>
-      <RouterLink to="/adminaddproducts"><v-btn text>
-        admin
-        </v-btn></RouterLink>
-      <RouterLink to="/store"><v-btn text>
-        STORE
-        </v-btn></RouterLink>
+
       <v-spacer></v-spacer>
       <RouterLink to="/account" v-if="this.token">
         <v-btn text><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -55,11 +48,6 @@ export default {
       if (confirmLogout) {
         await this.$store.dispatch('logout')
         this.$router.push('/login')
-      }
-    },
-    navigateTo(routeName) {
-      if (this.$route.name !== routeName) {
-        this.$router.push({ name: routeName });
       }
     },
   },
