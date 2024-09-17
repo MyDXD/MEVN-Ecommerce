@@ -42,6 +42,11 @@ const routes = [
         name: "bucket",
         component: () => import("../views/BucketPage.vue"),
       },
+      {
+        path: "/products",
+        name: "product",
+        component: () => import("../views/AddProducts.vue"),
+      },
     ],
   },
 ];

@@ -1,72 +1,92 @@
 <template>
   <div>
-    <h1>ALL PRODUCTS</h1>
-    <v-container>
-      <v-row>
-        <v-col
-          v-for="(product, index) in products"
-          :key="index"
-          cols="12"
-          md="4"
-        >
-          <v-card class="mx-auto my-4" max-width="400px">
-            <v-img
-              :src="product.image"
-              height="200px"
-              class="white--text align-end"
-            >
-            </v-img>
-            <v-card-title>{{ product.title }}</v-card-title>
-            <v-card-subtitle>{{ product.description }}</v-card-subtitle>
-            <v-card-text>
-              <div>Quantity: {{ product.quantity }}</div>
-              <div>Price: {{ product.price }} ฿</div>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" @click="buyProduct(product)">Buy</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+    <!-- <h1>My Account</h1> -->
+    <v-container class="fill-height" fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" md="4">
+        <h1 class="text-center">My Account</h1>
+      </v-col>
+    </v-row>
+    <v-row align="center" justify="center">
+      <v-col cols="12">
+        <!-- <h2 class="text-center">Register Page</h2> -->
+      </v-col>
+    </v-row>
+    <v-row align="center" justify="center">
+      <v-col cols="12" md="4">
+        <v-card class="elevation-12">
+          <v-card-title class="headline">Register</v-card-title>
+
+          <v-card-text>
+            <h3>E-mail</h3>
+           {{ user.email }}
+          </v-card-text>
+          <v-card-text>
+            <h3>Username</h3>
+           {{ user.username }}
+          </v-card-text>
+          <v-card-text>
+            <h3>Age</h3>
+           {{ user.age }}
+          </v-card-text>
+          <v-card-text>
+            <h3>Address</h3>
+           {{ user.address }}
+          </v-card-text>
+
+          
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import axios from "axios";
+// import axios from "axios";
 export default {
   data() {
     return {
-      products: [],
+      user: null,
+      Id: "", 
+      token:""
     };
   },
   methods: {
-    async fetchProducts() {
+    async fetchUserById() {
       try {
-        const response = await axios.get("http://localhost:5000/products");
-        this.products = response.data;
+        // console.log("id",this.Id);
+         const token = this.token
+         console.log("token",token);
+        const response = await this.axios.get(`http://localhost:5000/users/${this.Id}`,{
+          headers:{Authorization: `Bearer ${this.token}`}
+        },{
+        });
+        this.user = response.data;
+        console.log("user",this.user);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching user by ID:', error.message);
       }
     },
-    buyProduct(product) {
-      console.log(`Buying product: ${product.title}`);
-    },
+    getLocal() {
+      this.Id = localStorage.getItem("id");
+      this.token = localStorage.getItem("token");
+      if (!this.Id) {
+        console.error("No Id found in local storage.");
+      } else {
+        console.log("Retrieved Id from local storage:", this.Id);
+      }
+    }
+   
   },
   created() {
-    this.fetchProducts();
+    this.getLocal()
+    this.fetchUserById()
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-  margin-block: 2rem;
-}
-.card {
-  margin-block: 2rem;
-}
+
 </style>
