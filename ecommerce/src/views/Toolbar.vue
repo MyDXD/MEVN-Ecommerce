@@ -13,6 +13,9 @@
       <RouterLink to="/products"><v-btn text>
           product
         </v-btn></RouterLink>
+      <RouterLink to="/addproducts"><v-btn text>
+         add product
+        </v-btn></RouterLink>
       <v-spacer></v-spacer>
       <span>HI : {{ user.username }}</span>
       <RouterLink to="/account" v-if="this.token">
