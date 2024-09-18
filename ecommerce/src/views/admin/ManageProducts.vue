@@ -59,27 +59,30 @@
         Submit
       </v-btn>
     </v-form>
+    <listProducts/>
   </v-container>
 </template>
 <script>
 /* eslint-disable */
+import listProducts from "../../components/AdminManageProducts.vue"
 
 export default {
+  components:{listProducts},
   data() {
     return {
       // items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
       valid: false,
       formData: {
-        title: '',
-        description: '',
+        title: "",
+        description: "",
         quantity: null,
         price: null,
         image: null,
-        imageBase64: '', 
+        imageBase64: "",
       },
       rules: {
-        required: (value) => !! value || 'Required.',
-        number: (value) => !isNaN(value) || 'Must be a number.',
+        required: (value) => !!value || "Required.",
+        number: (value) => !isNaN(value) || "Must be a number.",
       },
     };
   },
@@ -91,12 +94,12 @@ export default {
         this.formData.imageBase64 = reader.result;
       };
       reader.onerror = (error) => {
-        console.log('Error: ', error);
+        console.log("Error: ", error);
       };
     },
     submitForm() {
       if (this.$refs.form.validate()) {
-        const token = localStorage.getItem('token'); 
+        const token = localStorage.getItem("token");
 
         const payload = {
           title: this.formData.title,
@@ -105,20 +108,28 @@ export default {
           price: this.formData.price,
           image: this.formData.imageBase64,
         };
-        console.log("payload",payload)
+        console.log("payload", payload);
 
         this.axios
-          .post('http://localhost:5000/products', payload, {
+          .post("http://localhost:5000/products", payload, {
             headers: {
-              Authorization: `Bearer ${token}`, 
+              Authorization: `Bearer ${token}`,
             },
           })
           .then((response) => {
-            console.log('Success:', response.data);
-
+            console.log("Success:", response.data);
+            this.formData = {
+              title: "",
+              description: "",
+              quantity: null,
+              price: null,
+              image: null,
+              imageBase64: "",
+            };
+            this.$refs.form.resetValidation();
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error("Error:", error);
           });
       }
     },
@@ -126,6 +137,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
