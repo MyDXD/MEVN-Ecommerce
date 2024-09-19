@@ -77,7 +77,7 @@
   
 <script>
 /* eslint-disable */
-  import axios from "axios";
+  // import this.axios from "this.axios";
   export default {
     data() {
       return {
@@ -95,7 +95,7 @@
     methods: {
       async fetchProducts() {
         try {
-          const response = await axios.get("http://localhost:5000/products");
+          const response = await this.axios.get("http://localhost:5000/products");
           this.products = response.data;
           console.log(this.products);
         } catch (error) {
@@ -104,7 +104,7 @@
       },
       async deleteProduct(productId) {
         try {
-          const response = await axios.delete(`http://localhost:5000/products/${productId}`);
+          const response = await this.axios.delete(`http://localhost:5000/products/${productId}`);
           console.log("Product deleted:", response.data);
           this.products = this.products.filter(product => product._id !== productId);
         } catch (error) {
@@ -118,7 +118,7 @@
       },
       async saveEditedProduct() {
         try {
-          const response = await axios.put(`http://localhost:5000/products/${this.editedProduct._id}`, this.editedProduct);
+          const response = await this.axios.put(`http://localhost:5000/products/${this.editedProduct._id}`, this.editedProduct);
           console.log("Product updated:", response.data);
   
           // อัปเดตสินค้าหลังจากที่แก้ไข

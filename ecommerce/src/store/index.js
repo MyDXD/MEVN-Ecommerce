@@ -33,31 +33,57 @@ export default new Vuex.Store({
         });
 
         const token = response.data.token;
-
-
+        const refreshToken = response.data.refreshToken;
         localStorage.setItem("token", token);
-        const decoded = jwtDecode(token);        
-
+        const decoded = jwtDecode(token);
+        const now = Date.now() / 1000;
+        if (decoded.exp < now) {
+          console.log("หมดอายุ");
+          const response = await axios.post(
+            "http://localhost:5000/token",
+            refreshToken
+          );
+          console.log(response);
+        } else {
+          console.log("ยังไม่หมดอายุ");
+        }
         localStorage.setItem("username", decoded.name);
         localStorage.setItem("id", decoded.id);
+        localStorage.setItem("refreshtoken", refreshToken);
 
         commit("setToken", token);
       } catch (error) {
         throw error; // สามารถจัดการ error ใน component
       }
     },
+    async getAccessToken() {
+      const token = localStorage.getItem("accessToken"); // เก็บ Access Token ใน local storage
+
+      if (!token || isTokenExpired(token)) {
+        const newToken = await getNewAccessToken(
+          localStorage.getItem("refreshToken")
+        );
+        localStorage.setItem("accessToken", newToken); // เก็บ Access Token ใหม่
+        return newToken;
+      }
+
+      return token;
+    },
+
     async logout({ commit }) {
       commit("clearAuthData");
       localStorage.removeItem("token");
       localStorage.removeItem("username");
       localStorage.removeItem("id");
+      localStorage.removeItem("refreshtoken");
     },
-    async tryAutoLogin({ commit }) {
-      const token = localStorage.getItem("token");
-      if (token) {
-        commit("setToken", token);
-      }
-    },
+    // async tryAutoLogin({ commit }) {
+    //   const token = localStorage.getItem("token");
+    //   if (token) {
+    //     commit("setToken", token);
+    //     commit("setRefreshToken", token);
+    //   }
+    // },
   },
   getters: {
     isAuthenticated(state) {
