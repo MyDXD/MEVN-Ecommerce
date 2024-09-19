@@ -35,7 +35,7 @@
   
 <script>
 /* eslint-disable */
-  import axios from "axios";
+  // import this.axios from "this.axios";
   export default {
     data() {
       return {
@@ -45,7 +45,7 @@
     methods: {
       async fetchProducts() {
         try {
-          const response = await axios.get("http://localhost:5000/products");
+          const response = await this.axios.get("http://localhost:5000/products");
           this.products = response.data;
           console.log(this.products);
           

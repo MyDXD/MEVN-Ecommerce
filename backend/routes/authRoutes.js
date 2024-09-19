@@ -53,15 +53,48 @@ router.post("/login", async (req, res) => {
       {  id: user._id, role: user.role, name : user.username },
       secret,
       {
-        expiresIn: "1d",
+        expiresIn: "3s",
       }
+    );
+    const refreshToken = jwt.sign(
+      { username: user.username }, 
+      process.env.REFRESH_TOKEN_SECRET , 
+      { expiresIn: "7d", algorithm: "HS256" } 
     );
 
     // res.json({ id : user._id , email : user.email, userName : user.name, token ,   isActive : user.isActive });
-    res.status(200).json({ message : "Login Successfuly" , token : token,
+    res.status(200).json({ message : "Login Successfuly" , token : token,refreshToken: refreshToken,
         email : user.email , username : user.username ,role : user.role , id : user._id});
   } catch (error) {
     res.status(500).json({ message: error.toString() });
   }
 });
+
+//refreshtoken
+router.post("/token", async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({ message: "Refresh Token required" });
+  }
+
+  try {
+    // ตรวจสอบว่า Refresh Token ยังใช้ได้หรือไม่
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) return res.status(403).json({ message: "Invalid Refresh Token" });
+
+      // ถ้า valid จะทำการสร้าง access token ใหม่
+      const accessToken = jwt.sign(
+        { id: user.id, role: user.role, name: user.username },
+        secret,
+        { expiresIn: "3s" }
+      );
+
+      res.status(200).json({ accessToken });
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.toString() });
+  }
+});
+
 module.exports = router;
