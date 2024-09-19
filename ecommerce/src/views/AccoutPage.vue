@@ -48,7 +48,7 @@
 export default {
   data() {
     return {
-      user: null,
+      user: "",
       Id: "", 
       token:""
     };
@@ -58,7 +58,6 @@ export default {
       try {
         // console.log("id",this.Id);
          const token = this.token
-         console.log("token",token);
         const response = await this.axios.get(`http://localhost:5000/users/${this.Id}`,{
           headers:{Authorization: `Bearer ${this.token}`}
         },{
@@ -80,7 +79,7 @@ export default {
     }
    
   },
-  created() {
+  mounted() {
     this.getLocal()
     this.fetchUserById()
   },

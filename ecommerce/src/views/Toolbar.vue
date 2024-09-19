@@ -17,7 +17,7 @@
          add product
         </v-btn></RouterLink>
       <v-spacer></v-spacer>
-      <span>HI : {{ user.username }}</span>
+      <span>HI : {{ user }}</span>
       <RouterLink to="/account" v-if="this.token">
         <v-btn text><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-6">
@@ -60,35 +60,14 @@ export default {
         this.$router.push('/login')
       }
     },
-    async fetchUserById() {
-      try {
-        // console.log("id",this.Id);
-         const token = this.token
-         console.log("token",token);
-        const response = await this.axios.get(`http://localhost:5000/users/${this.Id}`,{
-          headers:{Authorization: `Bearer ${this.token}`}
-        },{
-        });
-        this.user = response.data;
-        console.log("user",this.user);
-      } catch (error) {
-        console.error('Error fetching user by ID:', error.message);
-      }
-    },
     getLocal() {
       this.Id = localStorage.getItem("id");
-      if (!this.Id) {
-        console.error("No Id found in local storage.");
-      } else {
-        console.log("Retrieved Id from local storage:", this.Id);
-      }
+      this.user = localStorage.getItem("username");
+      this.token = localStorage.getItem("token");
     }
   },
-  created() {
-    this.token = localStorage.getItem("token");
+  mounted() {
     this.getLocal()
-    this.fetchUserById()
-    // โหลด token จาก localStorage เมื่อคอมโพเนนต์ถูกสร้างขึ้น
   },
   watch: {
     // ใช้ watch เพื่อสังเกตการณ์การเปลี่ยนแปลงของ localStorage token
